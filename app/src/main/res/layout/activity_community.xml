@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shadow_gradient"> <!-- Ensure shadow_gradient is defined in your drawables -->
+
+    <!-- ScrollView for Community Sections -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Logo ImageView under the title -->
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/logo5"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COMMUNITIES"
+                android:textSize="50sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:padding="16dp" />
+
+            <!-- Section 1: Football -->
+            <FrameLayout
+                android:id="@+id/section1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/football"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Football"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+            <!-- Section 2: NFL -->
+            <FrameLayout
+                android:id="@+id/section2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/nfl"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="NFL"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+            <!-- Section 3: NBA -->
+            <FrameLayout
+                android:id="@+id/section3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/nba"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Basketball"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+            <!-- Section 4: WWE -->
+            <FrameLayout
+                android:id="@+id/section4"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/wwe1"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Wrestling"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+            <!-- Fixed Navigation Buttons at the Bottom -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_gravity="bottom"
+                android:padding="16dp">
+
+                <ImageButton
+                    android:id="@+id/button_nav_to_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent"
+                    android:src="@drawable/bet_icon"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+                <ImageButton
+                    android:id="@+id/button_nav_to_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent"
+                    android:src="@drawable/settings_icon"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+                <ImageButton
+                    android:id="@+id/button_nav_to_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent"
+                    android:src="@drawable/home_icon_2"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+                <ImageButton
+                    android:id="@+id/button_new_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:src="@drawable/new_post_icon"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
+
+
+
+
+
+
+

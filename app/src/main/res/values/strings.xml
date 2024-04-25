@@ -1,0 +1,151 @@
+<resources>
+    <string name="app_name">SportSpocialMediaApp</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+
+
+
+    <!-- Launch Screen -->
+    <string name="app_name_1">VideoApp</string>
+    <string name="button_sign_up">Sign Up</string>
+    <string name="button_sign_in">Sign In</string>
+
+    <!-- Sign up & Sign in-->
+    <string name="sign_up">Sign Up</string>
+    <string name="already_member">Already a member? Sign in here!</string>
+    <string name="forename">Forename</string>
+    <string name="surname">Surname</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forename_hint">Your first name</string>
+    <string name="surname_hint">Your last name</string>
+    <string name="email_address_hint">Your email address</string>
+    <string name="password_hint">Choose a password</string>
+    <string name="password_hint_2">Your password</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="forgotten_pwd">Forgotten Password?</string>
+    <string name="no_account">No account? Register here</string>
+    <string name="join">Join Us!</string>
+
+
+    <!-- Search -->
+    <string name="button_search">Search</string>
+    <string name="button_videos">Videos</string>
+    <string name="button_users">Users</string>
+    <string name="button_back_to_feed">Back to feed</string>
+    <string name="start_search">Start your search...</string>
+
+
+    <!-- Home/Feed -->
+    <string name="no_videos">Follow accounts to see videos here</string>
+    <string name="search_no_videos">Search for users</string>
+    <string name="button_share">Share</string>
+    <string name="feed_header">Feed</string>
+    <string name="button_sign_out">Sign Out</string>
+    <string name="add_to_saved">Add to saved videos</string>
+    <string name="video_saved">Video saved</string>
+
+    <!-- Messages -->
+    <string name="messages_header">Messages</string>
+    <string name="unread">Unread</string>
+    <string name="view_all">View All</string>
+    <string name="button_new_message">New Message</string>
+    <string name="shared_video_inbox">Shared a video</string>
+    <string name="search_recip">Search for recipient...</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="select_user_label">Select a user to message:</string>
+    <string name="category">Category: </string>
+    <string name="uploaded_by">Uploaded by: </string>
+    <string name="view_video"> View Video</string>
+    <string name="no_results">No results found</string>
+    <string name="msg_placeholder">Type a message...</string>
+    <string name="send">Send</string>
+    <string name="you_label">You</string>
+    <string name="message">Message</string>
+
+    <!-- User Profile -->
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="settings">Settings</string>
+    <string name="posts">Posts</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+
+    <!-- view profile -->
+    <string name="follow">Follow</string>
+
+    <!-- Share video -->
+    <string name="select_share_user">Select a user to share with:</string>
+    <string name="share_video">Share Video</string>
+    <string name="share_placeholder">Share with...</string>
+    <string name="sharing_with">Sharing with:</string>
+    <string name="share_error">Error - please select a user</string>
+    <string name="share_video_message">Hey, check out this video:</string>
+    <string name="video_sent">Video sent</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="title_activity_comment">CommentActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+</resources>

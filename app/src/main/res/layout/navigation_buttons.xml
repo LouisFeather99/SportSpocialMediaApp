@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="16dp">
+
+    <ImageButton
+        android:id="@+id/button_nav_to_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
+        android:background="@color/transparent"
+        android:src="@drawable/message_icon"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+    <ImageButton
+        android:id="@+id/button_nav_to_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
+        android:background="@color/transparent"
+        android:src="@drawable/settings_icon"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+    <ImageButton
+        android:id="@+id/button_nav_to_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
+        android:background="@color/transparent"
+        android:src="@drawable/home_icon_2"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+    <ImageButton
+        android:id="@+id/button_new_post"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:src="@drawable/new_post_icon"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"/>
+</LinearLayout>

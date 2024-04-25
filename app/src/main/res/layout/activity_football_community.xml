@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shadow_gradient">
+
+    <!-- Bottom Navigation View Placed in the Middle -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:visibility="gone"
+        android:layout_gravity="center">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <!-- ScrollView for Community Sections -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/logo5"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FOOTBALL COMMUNITIES"
+                android:textSize="50sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:padding="16dp" />
+
+            <!-- Logo ImageView under the title -->
+
+
+            <!-- Section 1: Premier League -->
+            <FrameLayout
+                android:id="@+id/section1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/pl"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Premier League"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+            <!-- Section 2: EFL Championship -->
+            <FrameLayout
+                android:id="@+id/section2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/efl"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="EFL Championship"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+            <!-- Section 3: Champions League -->
+            <FrameLayout
+                android:id="@+id/section3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/ucl"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Champions League"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+            <!-- Section 4: Bundesliga -->
+            <FrameLayout
+                android:id="@+id/section4"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/bl"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Bundesliga"
+                    android:textSize="34sp"
+                    android:textColor="#FFFFFF"
+                    android:background="#000000" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

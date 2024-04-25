@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#000000">
+
+
+
+
+    <!-- Premier League Title Section -->
+    <TextView
+        android:id="@+id/premierLeagueTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00008B"
+        android:textColor="@color/white"
+        android:text="Premier League Winner 23/24"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="20dp" />
+
+    <!-- Premier League Winners List Section -->
+    <LinearLayout
+        android:id="@+id/winnerListSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/premierLeagueTitle">
+
+        <!-- Manchester City -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/manCityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manchester City"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/manCityOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="8/15"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <!-- Arsenal -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/arsenalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arsenal"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/arsenalOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="11/4"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <!-- Liverpool -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/liverpoolText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liverpool"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/liverpoolOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="6/1"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <!-- Additional teams would be added here following the same pattern -->
+    </LinearLayout>
+
+    <!-- Premier League Top Goalscorer Title Section -->
+    <TextView
+        android:id="@+id/premierLeagueTopScorerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00008B"
+        android:textColor="@color/white"
+        android:text="Premier League Top Goalscorer 23/24"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:layout_below="@id/winnerListSection" />
+
+    <!-- Premier League Top Goalscorer List Section -->
+    <LinearLayout
+        android:id="@+id/topScorerListSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/premierLeagueTopScorerTitle">
+
+        <!-- Erling Haaland -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/haalandText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Erling Haaland"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/haalandOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="4/6"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/palmerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cole Palmer"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/palmerOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="1/3"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/watkinsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ollie Watkins"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/watkinsOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="11/2"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/isakText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alexander Isak"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/isakOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="12/1"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/shadow_gradient">
+            <TextView
+                android:id="@+id/salahText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mo Salah"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/salahOdds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="12/1"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <!-- Additional top goalscorers would be added here following the same pattern -->
+
+    </LinearLayout>
+
+    <!-- Bottom Navigation Section -->
+    <!-- Your bottom navigation code would go here -->
+
+</RelativeLayout>

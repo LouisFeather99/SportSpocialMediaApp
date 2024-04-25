@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1003160010981",
+    "project_id": "sportspocialmediaapp",
+    "storage_bucket": "sportspocialmediaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003160010981:android:d7eb9688e3632668e9d40c",
+        "android_client_info": {
+          "package_name": "com.example.sportspocialmediaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAFw74skoIXM2qYuec9N5Api3TsmYg_zo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions for file access and camera -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SportSpocialMediaApp"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:label="Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Main Activity"/>
+
+        <activity
+            android:name=".LiveFeedActivity"
+            android:exported="false"> <!-- Set exported to true only if it is to be accessible from other apps -->
+        </activity>
+
+
+        <activity
+            android:name=".TimelineActivity"
+            android:exported="true"
+            android:label="Timeline"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".TimelinePL"
+            android:exported="true"
+            android:label="Premier League Timeline"/>
+
+        <activity
+            android:name=".PostActivity"
+            android:exported="false"
+            android:label="General Post Activity"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".CommunityActivity"
+            android:exported="false"
+            android:label="Community Hub"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".Settings_Activity"
+            android:exported="false"
+            android:label="Settings"/>
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:label="Registration"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".UpdateEmail"
+            android:exported="false"/>
+
+        <activity
+            android:name=".UpdatePass"
+            android:exported="false"
+            android:label="Update Password"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".NFLPostActivity"
+            android:exported="false"
+            android:label="NFL Community"/>
+
+        <activity
+            android:name=".NBAPostActivity"
+            android:exported="false"
+            android:label="NBA Community"/>
+
+        <activity
+            android:name=".EuroLeaguePostActivity"
+            android:exported="false"
+            android:label="Euro League Community"/>
+
+        <activity
+            android:name=".PLPostActivity"
+            android:exported="false"
+            android:label="Premier League Community"/>
+
+        <activity
+            android:name=".EFLPostActivity"
+            android:exported="false"
+            android:label="English Football League Community"/>
+
+        <activity
+            android:name=".UCLPostActivity"
+            android:exported="false"
+            android:label="UEFA Champions League Community"/>
+
+        <activity
+            android:name=".BLPostActivity"
+            android:exported="false"
+            android:label="Bundesliga Community"/>
+
+        <activity
+            android:name=".WWEPostActivity"
+            android:exported="false"
+            android:label="WWE Community"/>
+
+        <activity
+            android:name=".AEWPostActivity"
+            android:exported="false"
+            android:label="AEW Community"/>
+
+        <activity
+            android:name=".NJPWPostActivity"
+            android:exported="false"
+            android:label="NJPW Community"/>
+
+        <activity
+            android:name=".TNAPostActivity"
+            android:exported="false"
+            android:label="TNA Community"/>
+
+        <activity
+            android:name=".LiveScoresActivity"
+            android:exported="false"
+            android:label="Live Scores"/>
+
+        <activity
+            android:name=".CommentActivity"
+            android:exported="false"
+            android:label="@string/title_activity_comment"/>
+
+        <activity
+            android:name=".BasketballCommunityActivity"
+            android:exported="false"
+            android:label="Basketball Community"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".WrestlingCommunityActivity"
+            android:exported="false"
+            android:label="Wrestling Community"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".FootballCommunityActivity"
+            android:exported="false"
+            android:label="Football Community"
+            android:theme="@style/Theme.SportSpocialMediaApp"/>
+
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false"/>
+
+        <!-- Make sure to list any other activities here with the appropriate exported settings. -->
+
+    </application>
+
+</manifest>

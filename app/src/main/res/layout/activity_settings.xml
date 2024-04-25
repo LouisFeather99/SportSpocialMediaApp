@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <Switch
+        android:id="@+id/themeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dark Mode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:checked="false"
+        android:padding="10dp"
+        android:thumbTint="@color/common_google_signin_btn_text_light_pressed"
+        android:trackTint="@color/common_google_signin_btn_text_dark_pressed"/>
+
+</RelativeLayout>

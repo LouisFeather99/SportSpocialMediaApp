@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Drop Shadow -->
+    <item>
+        <shape>
+            <padding
+                android:bottom="2dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+            <solid android:color="#00000000" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+    <!-- Background with border -->
+
+    <!-- Shadow color and size -->
+    <item android:top="1dp" android:right="1dp" android:left="1dp">
+        <shape>
+            <gradient
+                android:startColor="#4000BFFF"
+                android:endColor="#1000BFFF"
+                android:angle="270" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+</layer-list>

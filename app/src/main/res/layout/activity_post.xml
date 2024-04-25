@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title TextView for Dynamic Updates -->
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post Activity"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- EditText for entering post content -->
+        <EditText
+            android:id="@+id/editTextPostContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write your post here..."
+            android:inputType="textMultiLine"
+            android:minLines="4"
+            android:maxLines="10"
+            android:padding="8dp"/>
+
+        <!-- Button for submitting the post -->
+        <Button
+            android:id="@+id/buttonPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post"
+            android:background="@color/design_default_color_primary"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Container for displaying posts dynamically -->
+        <LinearLayout
+            android:id="@+id/postContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <!-- Navigation Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp">
+
+            <ImageButton
+                android:id="@+id/button_nav_to_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/transparent"
+                android:src="@drawable/message_icon"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+            <ImageButton
+                android:id="@+id/button_nav_to_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/transparent"
+                android:src="@drawable/settings_icon"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+            <ImageButton
+                android:id="@+id/button_nav_to_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/transparent"
+                android:src="@drawable/home_icon_2"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+            <ImageButton
+                android:id="@+id/button_new_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:src="@drawable/new_post_icon"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

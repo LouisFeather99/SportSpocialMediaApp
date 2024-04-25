@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile" />
+    <item
+        android:id="@+id/nav_live_scores"
+        android:title="Live Scores" />
+    <item
+        android:id="@+id/nav_communities"
+        android:title="Communities" />
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings" />
+    <item
+        android:id="@+id/nav_sign_out"
+        android:title="Sign Out" />
+</menu>
