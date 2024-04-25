@@ -137,6 +137,32 @@
             android:name=".TNAPostActivity"
             android:exported="false"
             android:label="TNA Community"/>
+        <activity
+            android:name=".BettingActivity"
+            android:exported="false"
+            android:label="BettingActivity"/>
+
+        <activity
+            android:name=".RouletteActivity"
+            android:exported="false"
+            android:label="Roulette"/>
+
+        <activity
+            android:name=".PremOddActivity"
+            android:exported="false"
+            android:label="PremOdds"/>
+
+
+
+        <activity
+            android:name=".BundaOddsActivity"
+            android:exported="false"
+            android:label="BundaOdds"/>
+
+        <activity
+            android:name=".SlotMachineActivity"
+            android:exported="false"
+            android:label="Slots"/>
 
         <activity
             android:name=".LiveScoresActivity"
@@ -146,7 +172,7 @@
         <activity
             android:name=".CommentActivity"
             android:exported="false"
-            android:label="@string/title_activity_comment"/>
+            android:label="comment"/>
 
         <activity
             android:name=".BasketballCommunityActivity"

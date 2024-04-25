@@ -31,3 +31,4 @@ public class VCManager {
         Log.d(TAG, "Updated VC for " + username + " to: " + newBalance);
     }
 }
+

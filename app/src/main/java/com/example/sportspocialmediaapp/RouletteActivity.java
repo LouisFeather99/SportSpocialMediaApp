@@ -1,5 +1,6 @@
 package com.example.sportspocialmediaapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -76,6 +77,20 @@ public class RouletteActivity extends AppCompatActivity {
     private String getCurrentUsername() {
         // Retrieve the username of the logged-in user
         return "exampleUser"; // Placeholder, replace with actual username retrieval logic
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveVCBalance();
+    }
+
+    private void saveVCBalance() {
+        int balance = VCManager.getVC(this, username);
+        SharedPreferences prefs = getSharedPreferences("VC_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(username, balance);
+        editor.apply();
     }
 }
 

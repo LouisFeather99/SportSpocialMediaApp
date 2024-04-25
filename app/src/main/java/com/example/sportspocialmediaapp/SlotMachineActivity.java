@@ -1,5 +1,6 @@
 package com.example.sportspocialmediaapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -110,5 +111,19 @@ public class SlotMachineActivity extends AppCompatActivity {
     private String getCurrentUsername() {
         // Placeholder for actual username retrieval
         return "exampleUser";
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveVCBalance();
+    }
+
+    private void saveVCBalance() {
+        int balance = VCManager.getVC(this, username);
+        SharedPreferences prefs = getSharedPreferences("VC_Prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(username, balance);
+        editor.apply();
     }
 }

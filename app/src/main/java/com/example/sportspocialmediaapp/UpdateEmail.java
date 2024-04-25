@@ -1,6 +1,5 @@
 package com.example.sportspocialmediaapp;
 
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,8 +32,8 @@ public class UpdateEmail extends AppCompatActivity {
     }
 
     private void updateEmail() {
-        String newEmail = newEmailEditText.getText().toString();
-        String confirmEmail = confirmEmailEditText.getText().toString();
+        String newEmail = newEmailEditText.getText().toString().trim();
+        String confirmEmail = confirmEmailEditText.getText().toString().trim();
 
         if (newEmail.isEmpty() || confirmEmail.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -42,12 +41,13 @@ public class UpdateEmail extends AppCompatActivity {
         }
 
         if (!newEmail.equals(confirmEmail)) {
-            Toast.makeText(this, "New email and confirm email do not match", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Emails do not match", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // If the content of the last two fields match, show success message and go back to MainActivity
-        Toast.makeText(this, "Email updated", Toast.LENGTH_SHORT).show();
-        finish(); // Finish current activity and go back to MainActivity
+        // Proceed with updating the email in your database or preferences here
+        // Assuming success:
+        Toast.makeText(this, "Email updated successfully!", Toast.LENGTH_SHORT).show();
+        finish(); // Optionally return to the main activity
     }
 }

@@ -26,10 +26,14 @@ import androidx.core.content.ContextCompat;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+// Activity responsible for the main functionality of the app.
 public class MainActivity extends AppCompatActivity {
+
+    // Constants
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 1;
     private static final int PICK_IMAGE_REQUEST = 2;
 
+    // UI elements
     private Button btnSignOut, btnChooseImage;
     private TextView nameTextView, emailTextView;
     private ImageView profileImageView, messageButton, newPostButton, profileButton, betButton;
@@ -38,12 +42,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize UI elements
         initializeUI();
+
+        // Load user data from SharedPreferences
         loadUserData();
+
+        // Setup listeners for buttons
         setupButtonListeners();
     }
 
+    // Method to initialize UI elements
     private void initializeUI() {
+        // Find UI elements by their IDs
         btnSignOut = findViewById(R.id.btnSignOut);
         nameTextView = findViewById(R.id.textView);
         emailTextView = findViewById(R.id.textView2);
@@ -54,12 +66,14 @@ public class MainActivity extends AppCompatActivity {
         profileButton = findViewById(R.id.button_nav_to_profile);
         betButton = findViewById(R.id.button_nav_to_search);
 
+        // Set click listeners for navigation buttons
         messageButton.setOnClickListener(v -> startActivity(new Intent(this, CommunityActivity.class)));
         newPostButton.setOnClickListener(v -> startActivity(new Intent(this, LiveFeedActivity.class)));
         profileButton.setOnClickListener(v -> startActivity(new Intent(this, SettingActivity.class)));
         betButton.setOnClickListener(v -> startActivity(new Intent(this, BettingActivity.class)));
     }
 
+    // Method to load user data from SharedPreferences
     private void loadUserData() {
         SharedPreferences sharedPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         nameTextView.setText(sharedPrefs.getString("name", "No Name"));
@@ -68,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         loadImageFromPath(imagePath);
     }
 
+    // Method to load profile image from the specified path
     private void loadImageFromPath(String imagePath) {
         if (imagePath != null && !imagePath.isEmpty()) {
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
@@ -79,11 +94,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Method to set up click listeners for buttons
     private void setupButtonListeners() {
         btnSignOut.setOnClickListener(v -> showSignOutDialog());
         btnChooseImage.setOnClickListener(v -> checkPermissionAndOpenGallery());
     }
 
+    // Method to display sign-out confirmation dialog
     private void showSignOutDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Sign Out")
@@ -93,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
+    // Method to sign out user
     private void signOut() {
         SharedPreferences.Editor editor = getSharedPreferences("AppPrefs", MODE_PRIVATE).edit();
         editor.clear();
@@ -104,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    // Method to check permission and open gallery to choose image
     private void checkPermissionAndOpenGallery() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_READ_EXTERNAL_STORAGE);
@@ -112,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Method to open gallery to choose image
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
@@ -133,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Method to save image URI to SharedPreferences
     private void saveImageUri(Uri imageUri) {
         SharedPreferences.Editor editor = getSharedPreferences("AppPrefs", MODE_PRIVATE).edit();
         editor.putString("imagePath", imageUri.toString());
