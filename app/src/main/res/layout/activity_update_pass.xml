@@ -12,6 +12,14 @@
         android:hint="Enter new password"
         android:inputType="textPassword"/>
 
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirm new password"
+        android:inputType="textPassword"
+        android:layout_marginTop="16dp"/>
+
     <Button
         android:id="@+id/buttonUpdatePassword"
         android:layout_width="match_parent"
