@@ -1,5 +1,4 @@
 package com.example.sportspocialmediaapp;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sportspocialmediaapp.PostContract;
+import com.example.sportspocialmediaapp.PostDbHelper;
+
 public class CommentActivity extends AppCompatActivity {
     private long postId; // This should be passed via intent
     private LinearLayout commentsContainer;
@@ -28,10 +30,11 @@ public class CommentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comment);
 
         postId = getIntent().getLongExtra("post_id", -1);
-        commentsContainer = findViewById(R.id.commentsContainer);
-        editTextComment = findViewById(R.id.editTextComment);
-        buttonSubmitComment = findViewById(R.id.buttonSubmitComment);
+        commentsContainer = findViewById(R.id.commentsContainer); // Ensure this ID matches your layout
+        editTextComment = findViewById(R.id.editTextComment); // Ensure this ID matches your layout
+        buttonSubmitComment = findViewById(R.id.buttonSubmitComment); // Ensure this ID matches your layout
 
+        // Set up the database
         PostDbHelper dbHelper = new PostDbHelper(this);
         mDb = dbHelper.getWritableDatabase();
 
@@ -40,7 +43,9 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     private void loadComments() {
-        commentsContainer.removeAllViews(); // Clear all views to prevent duplication
+        // Clear the comments container before loading new comments
+        commentsContainer.removeAllViews();
+
         Cursor cursor = mDb.query(
                 PostContract.CommentEntry.TABLE_NAME,
                 new String[]{PostContract.CommentEntry._ID, PostContract.CommentEntry.COLUMN_COMMENT},
@@ -49,11 +54,14 @@ public class CommentActivity extends AppCompatActivity {
                 null, null, null
         );
 
-        if (cursor != null) {
+        if (cursor != null && cursor.getCount() > 0) {
             LayoutInflater inflater = LayoutInflater.from(this);
             int commentIndex = cursor.getColumnIndex(PostContract.CommentEntry.COLUMN_COMMENT);
             while (cursor.moveToNext()) {
-                addCommentView(cursor.getString(commentIndex));
+                View commentView = inflater.inflate(R.layout.comment_item, commentsContainer, false);
+                TextView textViewComment = commentView.findViewById(R.id.textViewComment);
+                textViewComment.setText(cursor.getString(commentIndex));
+                commentsContainer.addView(commentView);
             }
             cursor.close();
         } else {
@@ -78,22 +86,14 @@ public class CommentActivity extends AppCompatActivity {
         values.put(PostContract.CommentEntry.COLUMN_POST_ID, postId);
 
         long result = mDb.insert(PostContract.CommentEntry.TABLE_NAME, null, values);
-        if (result != -1) {
-            editTextComment.setText(""); // Clear the input field
-            addCommentView(comment); // Add only the new comment
-            Toast.makeText(CommentActivity.this, "Comment added successfully", Toast.LENGTH_SHORT).show();
-        } else {
+        if (result == -1) {
             Log.e("CommentActivity", "Failed to insert comment");
             Toast.makeText(CommentActivity.this, "Failed to add comment", Toast.LENGTH_SHORT).show();
+        } else {
+            editTextComment.setText(""); // Clear the input field
+            loadComments(); // Reload comments to display the new one
+            Toast.makeText(CommentActivity.this, "Comment added successfully", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void addCommentView(String comment) {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View commentView = inflater.inflate(R.layout.comment_item, commentsContainer, false);
-        TextView textViewComment = commentView.findViewById(R.id.textViewComment);
-        textViewComment.setText(comment);
-        commentsContainer.addView(commentView);
     }
 }
 

@@ -196,6 +196,10 @@
             android:name=".SettingActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".BasePostActivity"
+            android:exported="false"/>
+
         <!-- Make sure to list any other activities here with the appropriate exported settings. -->
 
     </application>

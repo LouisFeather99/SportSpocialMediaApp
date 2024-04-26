@@ -14,10 +14,11 @@
             android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post Activity"
+            android:text="Whats Happening"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textAlignment="center"
+            android:background="@drawable/shadow_gradient"
             android:layout_marginBottom="16dp"/>
 
         <!-- EditText for entering post content -->

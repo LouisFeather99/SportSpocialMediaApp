@@ -26,7 +26,7 @@ public class BasketballCommunityActivity extends AppCompatActivity {
 
         // Set onClick listeners for sections, replace with correct activities
         section1.setOnClickListener(v -> startActivity(new Intent(BasketballCommunityActivity.this, NBAPostActivity.class)));
-        section2.setOnClickListener(v -> startActivity(new Intent(BasketballCommunityActivity.this, PostActivity.class)));
+        section2.setOnClickListener(v -> startActivity(new Intent(BasketballCommunityActivity.this, LiveFeedActivity.class)));
         section3.setOnClickListener(v -> startActivity(new Intent(BasketballCommunityActivity.this, EuroLeaguePostActivity.class)));
 
 

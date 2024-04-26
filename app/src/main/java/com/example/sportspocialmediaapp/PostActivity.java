@@ -1,5 +1,6 @@
 package com.example.sportspocialmediaapp;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -104,7 +105,7 @@ public class PostActivity extends AppCompatActivity {
         textViewUserName.setText(userName);
 
         buttonViewComments.setOnClickListener(v -> {
-            Intent intent = new Intent(PostActivity.this, BasePostActivity.class);
+            Intent intent = new Intent(PostActivity.this, CommentActivity.class);
             intent.putExtra("post_id", postId);
             startActivity(intent);
         });
@@ -147,7 +148,8 @@ public class PostActivity extends AppCompatActivity {
 
     private void setupImageButtonListeners() {
         messageButton.setOnClickListener(v -> startActivity(new Intent(this, CommunityActivity.class)));
-        newPostButton.setOnClickListener(v -> startActivity(new Intent(this, LiveFeedActivity.class)));
+        newPostButton.setOnClickListener(v -> startActivity(new Intent(this, PostActivity.class)));
         profileButton.setOnClickListener(v -> startActivity(new Intent(this, SettingActivity.class)));
     }
 }
+

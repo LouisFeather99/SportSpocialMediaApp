@@ -34,7 +34,7 @@ public class SettingActivity extends AppCompatActivity {
         // Set onClickListeners
         btnUpdateEmail.setOnClickListener(v -> startActivity(new Intent(SettingActivity.this, UpdateEmail.class)));
         messageButton.setOnClickListener(v -> startActivity(new Intent(SettingActivity.this, CommunityActivity.class)));
-        newPostButton.setOnClickListener(v -> startActivity(new Intent(SettingActivity.this, LiveFeedActivity.class)));
+        newPostButton.setOnClickListener(v -> startActivity(new Intent(SettingActivity.this, PostActivity.class)));
         profileButton.setOnClickListener(v -> startActivity(new Intent(SettingActivity.this, SettingActivity.class)));
         HomeButton.setOnClickListener(v -> startActivity(new Intent(SettingActivity.this, MainActivity.class)));
         btnChangePass.setOnClickListener(v -> startActivity(new Intent(SettingActivity.this, UpdatePass.class)));

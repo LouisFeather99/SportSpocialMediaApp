@@ -31,13 +31,13 @@ public class CommunityActivity extends AppCompatActivity {
         profileButton = findViewById(R.id.button_nav_to_profile);
         HomeButton = findViewById(R.id.button_nav_to_search);
 
-        // Set onClick listeners for sections, replace with correct activities
+
         section1.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, FootballCommunityActivity.class)));
         section2.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, NFLPostActivity.class)));
         section3.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, BasketballCommunityActivity.class)));
         section4.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, WrestlingCommunityActivity.class)));
         BettingButton.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, BettingActivity.class)));
-        newPostButton.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, LiveFeedActivity.class)));
+        newPostButton.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, PostActivity.class)));
         profileButton.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, SettingActivity.class)));
         HomeButton.setOnClickListener(v -> startActivity(new Intent(CommunityActivity.this, MainActivity.class)));
 

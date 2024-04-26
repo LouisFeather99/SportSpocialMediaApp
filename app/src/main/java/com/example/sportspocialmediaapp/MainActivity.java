@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set click listeners for navigation buttons
         messageButton.setOnClickListener(v -> startActivity(new Intent(this, CommunityActivity.class)));
-        newPostButton.setOnClickListener(v -> startActivity(new Intent(this, LiveFeedActivity.class)));
+        newPostButton.setOnClickListener(v -> startActivity(new Intent(this, PostActivity.class)));
         profileButton.setOnClickListener(v -> startActivity(new Intent(this, SettingActivity.class)));
         betButton.setOnClickListener(v -> startActivity(new Intent(this, BettingActivity.class)));
     }

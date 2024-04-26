@@ -11,10 +11,10 @@ public class LiveFeedActivity extends BasePostActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitle("Live Feed");
+        setTitle("NCAA");
         TextView titleTextView = findViewById(R.id.textViewTitle);
         if (titleTextView != null) {
-            titleTextView.setText("Live Feed");
+            titleTextView.setText("NCAA");
         }
     }
 

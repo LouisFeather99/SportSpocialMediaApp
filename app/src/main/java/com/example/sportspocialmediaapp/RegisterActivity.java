@@ -23,6 +23,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button signupButton;
     AppDbHelper dbHelper;
 
+    private static final int PICK_IMAGE_REQUEST = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = signupEmail.getText().toString().trim();
                 String username = signupUsername.getText().toString().trim();
                 String password = signupPassword.getText().toString().trim();
+
+                if (!isValidEmail(email)) {
+                    Toast.makeText(RegisterActivity.this, "Invalid email. Email must contain exactly one '@'.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 ContentValues values = new ContentValues();
                 values.put("name", name);
@@ -68,7 +75,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // Open gallery when choose image button is clicked
         findViewById(R.id.btnChooseImage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,12 +83,14 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isValidEmail(String email) {
+        return email != null && email.chars().filter(ch -> ch == '@').count() == 1;
+    }
+
     private void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST);
     }
-
-    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
