@@ -28,7 +28,7 @@
             android:inputType="textMultiLine"
             android:minLines="4"
             android:maxLines="10"
-            android:padding="8dp"/>  <!-- Added padding for better text visibility -->
+            android:padding="8dp"/>
 
         <!-- Button for submitting the post -->
         <Button
