@@ -72,7 +72,8 @@ public class PostActivity extends AppCompatActivity {
         values.put(PostContract.PostEntry.COLUMN_USER_NAME, userName);
         values.put(PostContract.PostEntry.COLUMN_PAGE_ID, PAGE_ID);
 
-        new AsyncTask<ContentValues, Void, Long>() {
+        new AsyncTask
+                <ContentValues, Void, Long>() {
             @Override
             protected Long doInBackground(ContentValues... params) {
                 return mDb.insert(PostContract.PostEntry.TABLE_NAME, null, params[0]);
@@ -83,7 +84,8 @@ public class PostActivity extends AppCompatActivity {
                 if (postId == -1) {
                     Toast.makeText(PostActivity.this, "Failed to add post", Toast.LENGTH_SHORT).show();
                 } else {
-                    loadPosts();
+                    // Here we call addPostView directly with the newly added post details
+                    addPostView(postId, editTextPostContent.getText().toString().trim(), currentUserName);
                     editTextPostContent.setText(""); // Clear the input field after successful post
                     Toast.makeText(PostActivity.this, "Post added successfully", Toast.LENGTH_SHORT).show();
                 }
@@ -91,48 +93,49 @@ public class PostActivity extends AppCompatActivity {
         }.execute(values);
     }
 
+    private void addPostView(long postId, String content, String userName) {
+        LayoutInflater inflater = LayoutInflater.from(PostActivity.this);
+        View postView = inflater.inflate(R.layout.post_item, postContainer, false);
+        TextView textViewPostContent = postView.findViewById(R.id.textViewPostContent);
+        TextView textViewUserName = postView.findViewById(R.id.textViewUserName);
+        Button buttonViewComments = postView.findViewById(R.id.buttonViewComments);
+
+        textViewPostContent.setText(content);
+        textViewUserName.setText(userName);
+
+        buttonViewComments.setOnClickListener(v -> {
+            Intent intent = new Intent(PostActivity.this, BasePostActivity.class);
+            intent.putExtra("post_id", postId);
+            startActivity(intent);
+        });
+
+        postContainer.addView(postView);
+    }
+
     private void loadPosts() {
         new AsyncTask<Void, Void, Cursor>() {
             @Override
             protected Cursor doInBackground(Void... voids) {
                 String selection = PostContract.PostEntry.COLUMN_PAGE_ID + "=?";
-                String[] selectionArgs = new String[] { String.valueOf(PAGE_ID) };
+                String[] selectionArgs = new String[]{String.valueOf(PAGE_ID)};
                 String sortOrder = PostContract.PostEntry._ID + " DESC"; // Order by ID in descending order
 
                 return mDb.query(
                         PostContract.PostEntry.TABLE_NAME,
-                        new String[] { PostContract.PostEntry._ID, PostContract.PostEntry.COLUMN_CONTENT, PostContract.PostEntry.COLUMN_USER_NAME },
+                        new String[]{PostContract.PostEntry._ID, PostContract.PostEntry.COLUMN_CONTENT, PostContract.PostEntry.COLUMN_USER_NAME},
                         selection, selectionArgs, null, null, sortOrder
                 );
             }
 
             @Override
             protected void onPostExecute(Cursor cursor) {
-                postContainer.removeAllViews();
+                postContainer.removeAllViews(); // Ensure container is clear before adding views
                 if (cursor != null && cursor.moveToFirst()) {
-                    LayoutInflater inflater = LayoutInflater.from(PostActivity.this);
                     do {
                         long postId = cursor.getLong(cursor.getColumnIndexOrThrow(PostContract.PostEntry._ID));
                         String content = cursor.getString(cursor.getColumnIndexOrThrow(PostContract.PostEntry.COLUMN_CONTENT));
                         String userName = cursor.getString(cursor.getColumnIndexOrThrow(PostContract.PostEntry.COLUMN_USER_NAME));
-
-                        View postView = inflater.inflate(R.layout.post_item, postContainer, false);
-                        TextView textViewPostContent = postView.findViewById(R.id.textViewPostContent);
-                        TextView textViewUserName = postView.findViewById(R.id.textViewUserName);
-                        Button buttonViewComments = postView.findViewById(R.id.buttonViewComments);
-
-                        textViewPostContent.setText(content);
-                        textViewUserName.setText(userName);
-
-                        buttonViewComments.setOnClickListener(v -> {
-                            Intent intent = new Intent(PostActivity.this, CommentActivity.class);
-                            intent.putExtra("post_id", postId);
-                            intent.putExtra("post_content", content);
-                            intent.putExtra("user_name", userName);
-                            startActivity(intent);
-                        });
-
-                        postContainer.addView(postView);
+                        addPostView(postId, content, userName); // Use the addPostView method to add each post
                     } while (cursor.moveToNext());
                     cursor.close();
                 } else {

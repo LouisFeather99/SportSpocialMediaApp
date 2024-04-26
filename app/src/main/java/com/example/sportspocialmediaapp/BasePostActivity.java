@@ -12,18 +12,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.lang.ref.WeakReference;
 
 public abstract class BasePostActivity extends AppCompatActivity {
     protected EditText editTextPostContent;
     protected LinearLayout postContainer;
     protected SQLiteDatabase mDb;
     protected PostDbHelper dbHelper;
-    protected String currentUserName; // Username is fetched and set here
+    protected String currentUserName;
 
-    protected abstract int getPageId(); // Abstract method to be implemented by subclasses
+    protected abstract int getPageId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public abstract class BasePostActivity extends AppCompatActivity {
         editTextPostContent = findViewById(R.id.editTextPostContent);
         postContainer = findViewById(R.id.postContainer);
 
-        loadUserData(); // Direct method to load user data
+        loadUserData();
         setupPostButton();
         loadPosts();
     }
@@ -44,14 +46,14 @@ public abstract class BasePostActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadUserData();  // Reload user data when activity resumes
-        loadPosts();     // Reload posts to ensure they use the latest username
+        loadUserData();
+        loadPosts();
     }
 
     private void loadUserData() {
         SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        currentUserName = prefs.getString("name", "Unknown User"); // Ensure this matches the key used when saving the name
-        Log.d("BasePostActivity", "Current user: " + currentUserName);
+        currentUserName = prefs.getString("name", "Unknown User");
+        Log.d("BasePostActivity", "Current user data loaded: " + currentUserName);
     }
 
     private void setupPostButton() {
@@ -59,6 +61,7 @@ public abstract class BasePostActivity extends AppCompatActivity {
         buttonPost.setOnClickListener(v -> {
             String postContent = editTextPostContent.getText().toString().trim();
             if (!postContent.isEmpty()) {
+                Log.d("BasePostActivity", "Post button clicked, content: " + postContent);
                 insertPost(postContent);
             } else {
                 Toast.makeText(this, "Post content cannot be empty", Toast.LENGTH_SHORT).show();
@@ -72,23 +75,7 @@ public abstract class BasePostActivity extends AppCompatActivity {
         values.put(PostContract.PostEntry.COLUMN_USER_NAME, currentUserName);
         values.put(PostContract.PostEntry.COLUMN_PAGE_ID, getPageId());
 
-        new AsyncTask<ContentValues, Void, Long>() {
-            @Override
-            protected Long doInBackground(ContentValues... params) {
-                return mDb.insert(PostContract.PostEntry.TABLE_NAME, null, params[0]);
-            }
-
-            @Override
-            protected void onPostExecute(Long postId) {
-                if (postId != -1) {
-                    loadPosts();
-                    editTextPostContent.setText("");
-                    Toast.makeText(BasePostActivity.this, "Post added successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(BasePostActivity.this, "Failed to add post", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }.execute(values);
+        new InsertPostTask(this, values).execute();
     }
 
     protected void loadPosts() {
@@ -96,7 +83,7 @@ public abstract class BasePostActivity extends AppCompatActivity {
             @Override
             protected Cursor doInBackground(Void... voids) {
                 String selection = PostContract.PostEntry.COLUMN_PAGE_ID + "=?";
-                String[] selectionArgs = new String[] {String.valueOf(getPageId())};
+                String[] selectionArgs = new String[]{String.valueOf(getPageId())};
 
                 return mDb.query(
                         PostContract.PostEntry.TABLE_NAME,
@@ -112,18 +99,56 @@ public abstract class BasePostActivity extends AppCompatActivity {
                     LayoutInflater inflater = LayoutInflater.from(BasePostActivity.this);
                     do {
                         View postView = inflater.inflate(R.layout.post_item, postContainer, false);
-                        TextView textViewPostContent = postView.findViewById(R.id.textViewPostContent);
-                        TextView textViewUserName = postView.findViewById(R.id.textViewUserName);
-
-                        textViewPostContent.setText(cursor.getString(cursor.getColumnIndexOrThrow(PostContract.PostEntry.COLUMN_CONTENT)));
-                        textViewUserName.setText(cursor.getString(cursor.getColumnIndexOrThrow(PostContract.PostEntry.COLUMN_USER_NAME)));
-
+                        setupPostView(postView, cursor);
                         postContainer.addView(postView);
                     } while (cursor.moveToNext());
                     cursor.close();
+                } else {
+                    Log.d("BasePostActivity", "No posts found to load.");
                 }
             }
         }.execute();
     }
+
+    private void setupPostView(View view, Cursor cursor) {
+        // Setup post view
+    }
+
+    private static class InsertPostTask extends AsyncTask<Void, Void, Long> {
+        private final WeakReference<BasePostActivity> activityReference;
+        private ContentValues values;
+
+        InsertPostTask(BasePostActivity context, ContentValues values) {
+            activityReference = new WeakReference<>(context);
+            this.values = values;
+        }
+
+        @Override
+        protected Long doInBackground(Void... voids) {
+            BasePostActivity activity = activityReference.get();
+            if (activity != null && !isCancelled()) {
+                return activity.mDb.insert(PostContract.PostEntry.TABLE_NAME, null, values);
+            }
+            return -1L;
+        }
+
+        @Override
+        protected void onPostExecute(Long postId) {
+            BasePostActivity activity = activityReference.get();
+            if (activity != null && postId != -1) {
+                activity.loadPosts();
+                activity.editTextPostContent.setText("");
+                Toast.makeText(activity, "Post added successfully", Toast.LENGTH_SHORT).show();
+            } else if (activity != null) {
+                Toast.makeText(activity, "Failed to add post", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
+
+
+
+
+
+
 

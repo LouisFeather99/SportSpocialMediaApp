@@ -1,7 +1,6 @@
 package com.example.sportspocialmediaapp;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,16 +15,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 public class CommentActivity extends AppCompatActivity {
     private long postId; // This should be passed via intent
     private LinearLayout commentsContainer;
     private EditText editTextComment;
     private Button buttonSubmitComment;
     private SQLiteDatabase mDb;
-    private ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +28,10 @@ public class CommentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comment);
 
         postId = getIntent().getLongExtra("post_id", -1);
-        commentsContainer = findViewById(R.id.commentsContainer); // Ensure this ID matches your layout
-        editTextComment = findViewById(R.id.editTextComment); // Ensure this ID matches your layout
-        buttonSubmitComment = findViewById(R.id.buttonSubmitComment); // Ensure this ID matches your layout
+        commentsContainer = findViewById(R.id.commentsContainer);
+        editTextComment = findViewById(R.id.editTextComment);
+        buttonSubmitComment = findViewById(R.id.buttonSubmitComment);
 
-        // Set up the database
         PostDbHelper dbHelper = new PostDbHelper(this);
         mDb = dbHelper.getWritableDatabase();
 
@@ -46,40 +40,30 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     private void loadComments() {
-        executorService.execute(() -> {
-            Cursor cursor = mDb.query(
-                    "comments", // Assuming there's a table named "comments"
-                    new String[]{"comment_id", "content"}, // Columns to return
-                    "post_id = ?", // Columns for the WHERE clause
-                    new String[]{String.valueOf(postId)}, // Values for the WHERE clause
-                    null, null, null
-            );
-            runOnUiThread(() -> {
-                if (cursor != null) {
-                    LayoutInflater inflater = LayoutInflater.from(this);
-                    int contentIndex = cursor.getColumnIndex("content");
-                    if (contentIndex == -1) {
-                        Log.e("CommentActivity", "Column 'content' does not exist");
-                        return;
-                    }
-                    while (cursor.moveToNext()) {
-                        View commentView = inflater.inflate(R.layout.comment_item, commentsContainer, false);
-                        TextView textViewComment = commentView.findViewById(R.id.textViewComment);
-                        textViewComment.setText(cursor.getString(contentIndex));
-                        commentsContainer.addView(commentView);
-                    }
-                    cursor.close();
-                } else {
-                    Log.d("CommentActivity", "No comments found");
-                }
-            });
-        });
+        commentsContainer.removeAllViews(); // Clear all views to prevent duplication
+        Cursor cursor = mDb.query(
+                PostContract.CommentEntry.TABLE_NAME,
+                new String[]{PostContract.CommentEntry._ID, PostContract.CommentEntry.COLUMN_COMMENT},
+                PostContract.CommentEntry.COLUMN_POST_ID + " = ?",
+                new String[]{String.valueOf(postId)},
+                null, null, null
+        );
+
+        if (cursor != null) {
+            LayoutInflater inflater = LayoutInflater.from(this);
+            int commentIndex = cursor.getColumnIndex(PostContract.CommentEntry.COLUMN_COMMENT);
+            while (cursor.moveToNext()) {
+                addCommentView(cursor.getString(commentIndex));
+            }
+            cursor.close();
+        } else {
+            Log.d("CommentActivity", "No comments found");
+        }
     }
 
     private void setupSubmitButton() {
         buttonSubmitComment.setOnClickListener(v -> {
             String commentText = editTextComment.getText().toString().trim();
-            Log.d("CommentActivity", "Comment to submit: " + commentText);
             if (!commentText.isEmpty()) {
                 insertComment(commentText);
             } else {
@@ -90,30 +74,27 @@ public class CommentActivity extends AppCompatActivity {
 
     private void insertComment(String comment) {
         ContentValues values = new ContentValues();
-        values.put("content", comment);  // Ensure column names match your database schema
-        values.put("post_id", postId);
+        values.put(PostContract.CommentEntry.COLUMN_COMMENT, comment);
+        values.put(PostContract.CommentEntry.COLUMN_POST_ID, postId);
 
-        executorService.execute(() -> {
-            long result = mDb.insert("comments", null, values);
-            runOnUiThread(() -> {
-                if (result == -1) {
-                    Log.e("CommentActivity", "Failed to insert comment");
-                    Toast.makeText(CommentActivity.this, "Failed to add comment", Toast.LENGTH_SHORT).show();
-                } else {
-                    editTextComment.setText(""); // Clear the input field
-                    loadComments(); // Reload comments to display the new one
-                    Toast.makeText(CommentActivity.this, "Comment added successfully", Toast.LENGTH_SHORT).show();
-                }
-            });
-        });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (!executorService.isShutdown()) {
-            executorService.shutdown();
+        long result = mDb.insert(PostContract.CommentEntry.TABLE_NAME, null, values);
+        if (result != -1) {
+            editTextComment.setText(""); // Clear the input field
+            addCommentView(comment); // Add only the new comment
+            Toast.makeText(CommentActivity.this, "Comment added successfully", Toast.LENGTH_SHORT).show();
+        } else {
+            Log.e("CommentActivity", "Failed to insert comment");
+            Toast.makeText(CommentActivity.this, "Failed to add comment", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void addCommentView(String comment) {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View commentView = inflater.inflate(R.layout.comment_item, commentsContainer, false);
+        TextView textViewComment = commentView.findViewById(R.id.textViewComment);
+        textViewComment.setText(comment);
+        commentsContainer.addView(commentView);
+    }
 }
+
 
